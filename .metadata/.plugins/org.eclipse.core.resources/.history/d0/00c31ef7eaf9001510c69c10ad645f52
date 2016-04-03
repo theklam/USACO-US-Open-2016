@@ -8,8 +8,8 @@ import java.util.*;
 
 public class diamond {
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(new File("diamond.in"));
-//		Scanner s = new Scanner(new File("diamond.txt"));
+//		Scanner s = new Scanner(new File("diamond.in"));
+		Scanner s = new Scanner(new File("diamond.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"diamond.out")));
 		
@@ -62,7 +62,7 @@ public class diamond {
 			int counter = 0;
 			//check how many diamonds would fit in case if "outerSize" element was minimum
 			for(int innerSize: sizes) {
-				if(innerSize <= outerSize + k && innerSize >= outerSize) {
+				if(innerSize <= outerSize + k) {
 					counter++;
 				}
 			}

@@ -8,8 +8,8 @@ import java.util.*;
 
 public class diamond {
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(new File("diamond.in"));
-//		Scanner s = new Scanner(new File("diamond.txt"));
+//		Scanner s = new Scanner(new File("diamond.in"));
+		Scanner s = new Scanner(new File("diamond1.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"diamond.out")));
 		
@@ -21,6 +21,7 @@ public class diamond {
 		int minCounter = 0;
 		int midCounter = 0;
 		int maxCounter = 0;
+		int counter = 0;
 		int diamondsInCase = 0;
 		ArrayList<Integer> sizes = new ArrayList<Integer>();
 		
@@ -55,36 +56,13 @@ public class diamond {
 //			}
 //		}
 		
-		int maxC = -10000;
-		
-		//cycle through size elements
 		for(int outerSize: sizes) {
-			int counter = 0;
-			//check how many diamonds would fit in case if "outerSize" element was minimum
 			for(int innerSize: sizes) {
-				if(innerSize <= outerSize + k && innerSize >= outerSize) {
+				if(innerSize <= outerSize + k) {
 					counter++;
 				}
 			}
-			if(counter > maxC) {
-				maxC = counter;
-			}
-			System.out.println("Max is " + maxC);
 		}
-		
-//		//cycle through size elements
-//		for(int current = 0; current < sizes.size(); current++) {
-//			int counter = 0;
-//			//check how many diamonds would fit in this case if "current" element was minimum
-//			for(int size: sizes) {
-//				if(size <= sizes.get(current) + k) {
-//					counter++;
-//				}
-//			}
-//			if(counter > maxC) {
-//				maxC = counter;
-//			}
-//		}
 		
 		ArrayList<Integer> counters = new ArrayList<Integer> ();
 		counters.add(minCounter);
@@ -96,8 +74,7 @@ public class diamond {
 		System.out.println("Mid counter " + midCounter);
 		System.out.println("Max counter " + maxCounter);
 		
-//		diamondsInCase = counters.get(counters.size()-1);
-		diamondsInCase = maxC;
+		diamondsInCase = counters.get(counters.size()-1);
 		
 		System.out.println("max diamonds in case " + diamondsInCase);
 		

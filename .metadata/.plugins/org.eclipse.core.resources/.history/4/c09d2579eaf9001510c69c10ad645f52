@@ -8,8 +8,8 @@ import java.util.*;
 
 public class diamond {
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(new File("diamond.in"));
-//		Scanner s = new Scanner(new File("diamond.txt"));
+//		Scanner s = new Scanner(new File("diamond.in"));
+		Scanner s = new Scanner(new File("diamond1.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"diamond.out")));
 		
@@ -58,33 +58,31 @@ public class diamond {
 		int maxC = -10000;
 		
 		//cycle through size elements
-		for(int outerSize: sizes) {
-			int counter = 0;
-			//check how many diamonds would fit in case if "outerSize" element was minimum
-			for(int innerSize: sizes) {
-				if(innerSize <= outerSize + k && innerSize >= outerSize) {
-					counter++;
-				}
-			}
-			if(counter > maxC) {
-				maxC = counter;
-			}
-			System.out.println("Max is " + maxC);
-		}
-		
-//		//cycle through size elements
-//		for(int current = 0; current < sizes.size(); current++) {
-//			int counter = 0;
-//			//check how many diamonds would fit in this case if "current" element was minimum
-//			for(int size: sizes) {
-//				if(size <= sizes.get(current) + k) {
+//		for(int outerSize: sizes) {
+//			for(int innerSize: sizes) {
+//				if(innerSize <= outerSize + k) {
 //					counter++;
 //				}
 //			}
 //			if(counter > maxC) {
 //				maxC = counter;
 //			}
+//			counter = 0;
 //		}
+		
+		//cycle through size elements
+		for(int current = 0; current < sizes.size(); current++) {
+			int counter = 0;
+			//check how many diamonds would fit in this case if "current" element was minimum
+			for(int size: sizes) {
+				if(size <= sizes.get(current) + k) {
+					counter++;
+				}
+			}
+			if(counter > maxC) {
+				maxC = counter;
+			}
+		}
 		
 		ArrayList<Integer> counters = new ArrayList<Integer> ();
 		counters.add(minCounter);
