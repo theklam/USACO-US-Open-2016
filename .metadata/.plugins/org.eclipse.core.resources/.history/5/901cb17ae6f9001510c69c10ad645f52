@@ -16,7 +16,6 @@ public class diamond {
 		int n = s.nextInt();
 		int k = s.nextInt();
 		int min = 100000;
-		int mid;
 		int max = -100000;
 		int minCounter = 0;
 		int midCounter = 0;
@@ -27,11 +26,9 @@ public class diamond {
 		while(s.hasNext()) {
 			sizes.add(s.nextInt());
 		}	
-		
 		Collections.sort(sizes);
 		min = sizes.get(0);
-		mid = sizes.get(sizes.size()/2);
-		max = sizes.get(sizes.size()-1);
+		max = sizes.get(sizes.length()-1);
 		
 		
 //		for(int size: sizes) {
@@ -48,21 +45,17 @@ public class diamond {
 			if(size >= max - k) {
 				maxCounter++;
 			}
-			if(size >= mid - k && size <= mid + k) {
-				midCounter++;
-			}
 		}
-		
-		ArrayList<Integer> counters = new ArrayList<Integer> ();
-		counters.add(minCounter);
-		counters.add(midCounter);
-		counters.add(maxCounter);
-		Collections.sort(counters);
 		
 		System.out.println("Min counter " + minCounter);
 		System.out.println("Max counter " + maxCounter);
 		
-		diamondsInCase = counters.get(counters.size()-1);
+		if(minCounter > maxCounter) {
+			diamondsInCase = minCounter;
+		}
+		else {
+			diamondsInCase = minCounter;
+		}
 		
 		System.out.println("max diamonds in case " + diamondsInCase);
 		

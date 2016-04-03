@@ -53,16 +53,15 @@ public class diamond {
 			}
 		}
 		
-		ArrayList<Integer> counters = new ArrayList<Integer> ();
-		counters.add(minCounter);
-		counters.add(midCounter);
-		counters.add(maxCounter);
-		Collections.sort(counters);
-		
 		System.out.println("Min counter " + minCounter);
 		System.out.println("Max counter " + maxCounter);
 		
-		diamondsInCase = counters.get(counters.size()-1);
+		if(minCounter > maxCounter) {
+			diamondsInCase = minCounter;
+		}
+		else {
+			diamondsInCase = minCounter;
+		}
 		
 		System.out.println("max diamonds in case " + diamondsInCase);
 		
