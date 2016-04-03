@@ -8,8 +8,8 @@ import java.util.*;
 
 public class reduce {
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(new File("reduce.in"));
-//		 Scanner s = new Scanner(new File("reduce.txt"));
+//		Scanner s = new Scanner(new File("reduce.in"));
+		 Scanner s = new Scanner(new File("reduce.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"reduce.out")));
 
@@ -61,6 +61,7 @@ public class reduce {
 		System.out.println(leftXpos);
 		System.out.println(leftYpos);
 
+
 		// recalculate max and min cows
 		maxXpos = Collections.max(leftXpos);
 		minXpos = Collections.min(leftXpos);
@@ -73,7 +74,6 @@ public class reduce {
 		
 		if(leftArea < rightArea) {
 			System.out.println(leftArea);
-			out.println(leftArea);
 		}
 		else {
 			System.out.println(rightArea);

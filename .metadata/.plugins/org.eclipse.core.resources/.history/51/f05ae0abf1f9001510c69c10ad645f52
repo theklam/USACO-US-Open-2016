@@ -61,6 +61,7 @@ public class reduce {
 		System.out.println(leftXpos);
 		System.out.println(leftYpos);
 
+
 		// recalculate max and min cows
 		maxXpos = Collections.max(leftXpos);
 		minXpos = Collections.min(leftXpos);
