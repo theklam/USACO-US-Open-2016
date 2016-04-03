@@ -1,0 +1,70 @@
+/*
+ID: ikalvin1
+LANG: JAVA
+TASK: reduce
+ */
+import java.io.*;
+import java.util.*;
+
+public class reduce {
+	public static void main(String[] args) throws IOException {
+//		Scanner s = new Scanner(new File("reduce.in"));
+		Scanner s = new Scanner(new File("reduce.txt"));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+				"reduce.out")));
+		
+		ArrayList<Integer> xpos = new ArrayList<Integer>();
+		ArrayList<Integer> ypos = new ArrayList<Integer>();
+		int minXpos = 10000;
+		int maxXpos = -10000;
+		int minYpos = 10000;
+		int maxYpos = -10000; 
+		
+		int n = s.nextInt();
+		while(s.hasNext()) {
+			xpos.add(s.nextInt());
+			ypos.add(s.nextInt());
+		}
+		
+		//test print
+		for(int x: xpos) {
+			System.out.println(x);
+		}
+		for(int y: ypos) {
+			System.out.println(y);
+		}
+		
+		//find min and max x
+		for(int x: xpos) {
+			if(x > maxXpos) {
+				maxXpos = x;
+			}
+			if(x < minXpos) {
+				minXpos = x;
+			}
+		}
+		
+		//find min and max y
+		for(int y: ypos) {
+			if(y > maxYpos) {
+				maxYpos = y;
+			}
+			if(y < minYpos) {
+				minYpos = y;
+			}
+			System.out.println("min y is " + minYpos);
+		}
+		
+		
+		System.out.println("Max x is " + maxXpos);
+		System.out.println("Min x is " + minXpos);
+		System.out.println("Max y is " + maxYpos);
+		System.out.println("Min y is " + maxYpos);
+		int area = (maxXpos - minXpos) * (maxYpos - minYpos);
+		System.out.println(area);
+		
+		
+		out.close();
+
+	}
+}

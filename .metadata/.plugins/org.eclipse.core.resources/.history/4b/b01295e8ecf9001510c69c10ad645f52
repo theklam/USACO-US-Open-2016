@@ -1,0 +1,22 @@
+/*
+ID: ikalvin1
+LANG: JAVA
+TASK: reduce
+ */
+import java.io.*;
+import java.util.*;
+
+public class reduce {
+	public static void main(String[] args) throws IOException {
+		Scanner s = new Scanner(new File("reduce.in"));
+//		Scanner s = new Scanner(new File("reduce.txt"));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+				"reduce.out")));
+		
+		
+		
+		out.println(reducesInCase);
+		out.close();
+
+	}
+}

@@ -1,0 +1,108 @@
+/*
+ID: ikalvin1
+LANG: JAVA
+TASK: reduce
+ */
+import java.io.*;
+import java.util.*;
+
+public class reduce {
+	public static void main(String[] args) throws IOException {
+		Scanner s = new Scanner(new File("diamond.in"));
+//		Scanner s = new Scanner(new File("diamond.txt"));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+				"diamond.out")));
+		
+		int n = s.nextInt();
+		int k = s.nextInt();
+		int min = 100000;
+		int mid;
+		int max = -100000;
+		int minCounter = 0;
+		int midCounter = 0;
+		int maxCounter = 0;
+		int diamondsInCase = 0;
+		ArrayList<Integer> sizes = new ArrayList<Integer>();
+		
+		while(s.hasNext()) {
+			sizes.add(s.nextInt());
+		}	
+		
+		Collections.sort(sizes);
+		min = sizes.get(0);
+		mid = sizes.get(sizes.size()/2);
+		max = sizes.get(sizes.size()-1);
+		
+		
+//		for(int size: sizes) {
+//			System.out.println(size);
+//		}
+//		System.out.println(max + " " + min);
+		
+//		for(int size: sizes) {
+//			//see how many diamonds can fit in the case if we include the minimum value
+//			if(size <= min + k) {
+//				minCounter++;
+//			}
+//			//see how many diamonds can fit in the case if we include the maximum value
+//			if(size >= max - k) {
+//				maxCounter++;
+//			}
+//
+//			//see how many diamonds can fit in the case if we include the middle value
+//			if(size >= mid - k && size <= mid + k) {
+//				midCounter++;
+//			}
+//		}
+		
+		int maxC = -10000;
+		
+		//cycle through size elements
+		for(int outerSize: sizes) {
+			int counter = 0;
+			//check how many diamonds would fit in case if "outerSize" element was minimum
+			for(int innerSize: sizes) {
+				if(innerSize <= outerSize + k && innerSize >= outerSize) {
+					counter++;
+				}
+			}
+			if(counter > maxC) {
+				maxC = counter;
+			}
+			System.out.println("Max is " + maxC);
+		}
+		
+//		//cycle through size elements
+//		for(int current = 0; current < sizes.size(); current++) {
+//			int counter = 0;
+//			//check how many diamonds would fit in this case if "current" element was minimum
+//			for(int size: sizes) {
+//				if(size <= sizes.get(current) + k) {
+//					counter++;
+//				}
+//			}
+//			if(counter > maxC) {
+//				maxC = counter;
+//			}
+//		}
+		
+		ArrayList<Integer> counters = new ArrayList<Integer> ();
+		counters.add(minCounter);
+		counters.add(midCounter);
+		counters.add(maxCounter);
+		Collections.sort(counters);
+		
+		System.out.println("Min counter " + minCounter);
+		System.out.println("Mid counter " + midCounter);
+		System.out.println("Max counter " + maxCounter);
+		
+//		diamondsInCase = counters.get(counters.size()-1);
+		diamondsInCase = maxC;
+		
+		System.out.println("max diamonds in case " + diamondsInCase);
+		
+		out.println(diamondsInCase);
+		out.close();
+
+	}
+}
