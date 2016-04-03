@@ -8,8 +8,8 @@ import java.util.*;
 
 public class reduce {
 	public static void main(String[] args) throws IOException {
-		 Scanner s = new Scanner(new File("reduce.in"));
-//		Scanner s = new Scanner(new File("reduce.txt"));
+		// Scanner s = new Scanner(new File("reduce.in"));
+		Scanner s = new Scanner(new File("reduce.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"reduce.out")));
 
@@ -101,6 +101,7 @@ public class reduce {
 		areas.add(topArea);
 		areas.add(leftArea);
 		areas.add(rightArea);
+		
 		
 		out.println(Collections.min(areas));
 		out.close();

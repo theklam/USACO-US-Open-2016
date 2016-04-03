@@ -8,8 +8,8 @@ import java.util.*;
 
 public class reduce {
 	public static void main(String[] args) throws IOException {
-		 Scanner s = new Scanner(new File("reduce.in"));
-//		Scanner s = new Scanner(new File("reduce.txt"));
+		// Scanner s = new Scanner(new File("reduce.in"));
+		Scanner s = new Scanner(new File("reduce.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"reduce.out")));
 
@@ -86,23 +86,24 @@ public class reduce {
 		ArrayList<Integer> bottomYpos = new ArrayList<Integer>();
 		bottomYpos.addAll(ypos);
 		int indexYBottomCow = ypos.indexOf(minYpos);
-		bottomXpos.remove(indexYBottomCow);
-		bottomYpos.remove(indexYBottomCow);
+		topXpos.remove(indexYTopCow);
+		topYpos.remove(indexYTopCow);
 
 		// recalculate max and min cows
-		maxXpos = Collections.max(bottomXpos);
-		minXpos = Collections.min(bottomXpos);
-		maxYpos = Collections.max(bottomYpos);
-		minYpos = Collections.min(bottomYpos);
-		int bottomArea = (maxXpos - minXpos) * (maxYpos - minYpos);
+		maxXpos = Collections.max(topXpos);
+		minXpos = Collections.min(topXpos);
+		maxYpos = Collections.max(topYpos);
+		minYpos = Collections.min(topYpos);
+		int topArea = (maxXpos - minXpos) * (maxYpos - minYpos);
 
-		ArrayList<Integer> areas = new ArrayList<Integer>();
-		areas.add(bottomArea);
-		areas.add(topArea);
-		areas.add(leftArea);
-		areas.add(rightArea);
-		
-		out.println(Collections.min(areas));
+		if (leftArea < rightArea) {
+			System.out.println(leftArea);
+			out.println(leftArea);
+		} else {
+			System.out.println(rightArea);
+			out.println(rightArea);
+		}
+
 		out.close();
 
 	}
