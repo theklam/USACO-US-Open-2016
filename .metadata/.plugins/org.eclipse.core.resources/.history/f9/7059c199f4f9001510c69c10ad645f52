@@ -1,0 +1,30 @@
+/*
+ID: ikalvin1
+LANG: JAVA
+TASK: bcs
+ */
+import java.io.*;
+import java.util.*;
+
+public class bcs {
+	public static void main(String[] args) throws IOException {
+//		 Scanner s = new Scanner(new File("bcs.in"));
+		Scanner s = new Scanner(new File("bcs.txt"));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+				"bcs.out")));
+		
+		int n = s.nextInt();
+		int k = s.nextInt();
+		
+		char[][] original = new char[n][n];
+		int counter = 0;
+		String c = "";
+		while(counter < n) {
+			c = s.hasNext();
+		}
+		System.out.println(c);
+		
+		out.close();
+
+	}
+}
