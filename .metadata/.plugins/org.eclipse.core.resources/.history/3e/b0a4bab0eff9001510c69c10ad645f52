@@ -43,7 +43,11 @@ public class reduce {
 		minXpos = Collections.min(xpos);
 		maxYpos = Collections.max(ypos);
 		minYpos = Collections.min(ypos);
-	
+		
+		System.out.println("Max x is " + maxXpos);
+		System.out.println("Min x is " + minXpos);
+		System.out.println("Max y is " + maxYpos);
+		System.out.println("Min y is " + minYpos);
 		int area = (maxXpos - minXpos) * (maxYpos - minYpos);
 		System.out.println(area);
 

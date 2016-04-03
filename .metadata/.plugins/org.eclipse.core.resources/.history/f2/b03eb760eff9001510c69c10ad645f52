@@ -8,8 +8,8 @@ import java.util.*;
 
 public class reduce {
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(new File("reduce.in"));
-//		Scanner s = new Scanner(new File("reduce.txt"));
+		// Scanner s = new Scanner(new File("reduce.in"));
+		Scanner s = new Scanner(new File("reduce.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"reduce.out")));
 
@@ -25,8 +25,7 @@ public class reduce {
 			xpos.add(s.nextInt());
 			ypos.add(s.nextInt());
 		}
-		
-		//calculate max and min cows
+
 		maxXpos = Collections.max(xpos);
 		minXpos = Collections.min(xpos);
 		maxYpos = Collections.max(ypos);
@@ -39,15 +38,14 @@ public class reduce {
 		ypos.remove(indexXRightCow);
 		
 		//recalculate max and min cows
-		maxXpos = Collections.max(xpos);
-		minXpos = Collections.min(xpos);
-		maxYpos = Collections.max(ypos);
-		minYpos = Collections.min(ypos);
-	
+
+		System.out.println("Max x is " + maxXpos);
+		System.out.println("Min x is " + minXpos);
+		System.out.println("Max y is " + maxYpos);
+		System.out.println("Min y is " + minYpos);
 		int area = (maxXpos - minXpos) * (maxYpos - minYpos);
 		System.out.println(area);
 
-		out.println(area);
 		out.close();
 
 	}
