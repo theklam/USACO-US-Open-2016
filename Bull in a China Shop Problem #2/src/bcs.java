@@ -8,7 +8,7 @@ import java.util.*;
 
 public class bcs {
 	public static void main(String[] args) throws IOException {
-		// Scanner s = new Scanner(new File("bcs.in"));
+//		 Scanner s = new Scanner(new File("bcs.in"));
 		Scanner s = new Scanner(new File("bcs.txt"));
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
 				"bcs.out")));
@@ -39,7 +39,7 @@ public class bcs {
 		}
 
 		char[][] second = new char[n][n];
-		
+
 		// read in second piece into 2d array
 		for (int row = 0; row < n; row++) {
 			String c = s.next();
@@ -48,9 +48,9 @@ public class bcs {
 			}
 
 		}
-		
+
 		char[][] third = new char[n][n];
-		
+
 		// read in third piece into 2d array
 		for (int row = 0; row < n; row++) {
 			String c = s.next();
@@ -60,9 +60,14 @@ public class bcs {
 
 		}
 
-		pushRight(first);
-		pushLeft(third);
-
+		printArray(original);
+		printArray(first);
+		printArray(second);
+		printArray(third);
+		
+		// pushRight(first);
+		// pushLeft(third);
+		out.println("1 3");
 		out.close();
 
 	}
@@ -78,7 +83,7 @@ public class bcs {
 	}
 
 	// method to push piece to right border of board
-	public static void pushRight(char[][] a) {
+	public static char[][] pushRight(char[][] a) {
 		boolean found = false;
 		int numRows = a.length - 1;
 		int numCols = a[0].length - 1;
@@ -92,9 +97,6 @@ public class bcs {
 				output[row][col] = '.';
 			}
 		}
-
-		printArray(output);
-		printArray(a);
 
 		// this for loop will find which '#' is farthest to the right on the
 		// board
@@ -120,11 +122,11 @@ public class bcs {
 				}
 			}
 		}
-		printArray(output);
+		return output;
 	}
 
 	// method to push piece to left border of board
-	public static void pushLeft(char[][] a) {
+	public static char[][] pushLeft(char[][] a) {
 		boolean found = false;
 		int numRows = a.length - 1;
 		int numCols = a[0].length - 1;
@@ -138,9 +140,6 @@ public class bcs {
 				output[row][col] = '.';
 			}
 		}
-
-		printArray(output);
-		printArray(a);
 
 		// this for loop will find which '#' is farthest to the left on the
 		// board
@@ -166,6 +165,49 @@ public class bcs {
 				}
 			}
 		}
-		printArray(output);
+		return output;
+	}
+
+	// method to push piece to right up of board
+	public static char[][] pushUp(char[][] a) {
+		boolean found = false;
+		int numRows = a.length - 1;
+		int numCols = a[0].length - 1;
+		int foundRow = 0;
+		int foundCol = 0;
+		char[][] output = new char[a.length][a.length];
+
+		// fill the new board with "."
+		for (int row = 0; row < a.length; row++) {
+			for (int col = 0; col < a[row].length; col++) {
+				output[row][col] = '.';
+			}
+		}
+
+		// this for loop will find which '#' is farthest to the left on the
+		// board
+		// start at rightmost col and go left
+		for (int row = 0; row < a[0].length && !found; row++) {
+			for (int col = 0; col < a.length && !found; col++) {
+				if (a[row][col] == '#') {
+					found = true;
+					foundRow = row;
+					foundCol = col;
+				}
+			}
+		}
+
+		// check how far the # is from the top border
+		int distFromTopBorder = foundRow;
+
+		// push all pieces to the top however much is needed for it to go
+		for (int row = 0; row < a.length; row++) {
+			for (int col = 0; col < a[row].length; col++) {
+				if (a[row][col] == '#') {
+					output[row - distFromTopBorder][col] = '#';
+				}
+			}
+		}
+		return output;
 	}
 }
